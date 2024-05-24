@@ -17,7 +17,6 @@ export const GlobalStyle = () => {
         body {
           max-width: 100vw;
           overflow-x: hidden;
-          background-color: ${theme.palette.background.default};
         }
 
         a {

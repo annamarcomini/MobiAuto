@@ -1,6 +1,6 @@
 import { Roboto } from "next/font/google"
 import { createTheme } from "@mui/material/styles"
-import { red } from "@mui/material/colors"
+import { deepPurple, teal } from "@mui/material/colors"
 
 export const roboto = Roboto({
   weight: ["300", "400", "500", "700"],
@@ -12,13 +12,15 @@ export const roboto = Roboto({
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#556cd6",
+      main: deepPurple[500],
+      light: deepPurple[50],
     },
     secondary: {
-      main: "#19857b",
+      main: teal[500],
+      light: teal[100],
     },
-    error: {
-      main: red.A400,
+    background: {
+      default: deepPurple[50],
     },
   },
   typography: {
