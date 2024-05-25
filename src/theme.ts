@@ -14,13 +14,16 @@ const theme = createTheme({
     primary: {
       main: deepPurple[500],
       light: deepPurple[50],
+      dark: deepPurple[100],
     },
     secondary: {
       main: teal[500],
       light: teal[100],
+      
     },
     background: {
       default: deepPurple[50],
+      paper: teal[50]
     },
   },
   typography: {
