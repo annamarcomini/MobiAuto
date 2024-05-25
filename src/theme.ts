@@ -18,12 +18,12 @@ const theme = createTheme({
     },
     secondary: {
       main: teal[500],
-      light: teal[100],
+      light: teal[50],
       
     },
     background: {
       default: deepPurple[50],
-      paper: teal[50]
+      
     },
   },
   typography: {
