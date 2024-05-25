@@ -1,8 +1,6 @@
 import { css, Global } from "@emotion/react"
-import { useTheme } from "@mui/material/styles"
 
 export const GlobalStyle = () => {
-  const theme = useTheme();
 
   return (
     <Global
