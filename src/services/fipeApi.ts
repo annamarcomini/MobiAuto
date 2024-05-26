@@ -1,4 +1,4 @@
-const BASE_URL = "https://parallelum.com.br/fipe/api/v1";
+export const BASE_URL = "https://parallelum.com.br/fipe/api/v1";
 
 const fetchBrands = async () => {
   try {
@@ -23,19 +23,34 @@ const fetchModels = async (codigoBrand: string) => {
   }
 };
 
-const fetchYears = async (codigoBrand: string, codigoModels: string) => {
+const fetchYears = async (codigoBrand: string, codigoModel: string) => {
   try {
     const response = await fetch(
-      `${BASE_URL}/carros/marcas/${codigoBrand}/modelos/${codigoModels}/anos`
+      `${BASE_URL}/carros/marcas/${codigoBrand}/modelos/${codigoModel}/anos`
     );
     const data = await response.json();
-    console.log("okayyyyyyyyyyyyy", data);
+
     return data;
   } catch (error) {
     console.error("Error fetching brands:", error);
   }
 };
 
-const fipeApi = { fetchBrands, fetchModels, fetchYears };
+const fetchPrice = async (
+  codigoBrand: string,
+  codigoModel: string,
+  codigoYear: string
+) => {
+  try {
+    const response = await fetch(
+      `${BASE_URL}/carros/marcas/${codigoBrand}/modelos/${codigoModel}/anos/${codigoYear}`
+    );
+    const data = await response.json();
+    return data.Valor;
+  } catch (error) {
+    console.error("Error fetching brands:", error);
+  }
+};
+const fipeApi = { fetchBrands, fetchModels, fetchYears, fetchPrice };
 
 export default fipeApi;

@@ -33,6 +33,7 @@ interface VehicleContextState {
   years: Year[];
   selectedYear: Year | null;
   setSelectedYear: (value: Year | null) => void;
+  price: string | null;
 }
 
 const VehicleContext = createContext<VehicleContextState | undefined>(
@@ -58,6 +59,7 @@ function VehicleProvider({ children }: Readonly<Props>) {
   const [selectedModel, setSelectedModel] = useState<Model | null>(null);
   const [years, setYears] = useState<Year[]>([]);
   const [selectedYear, setSelectedYear] = useState<Year | null>(null);
+  const [price, setPrice] = useState<string | null>(null);
 
   useEffect(() => {
     fetchBrands();
@@ -71,6 +73,21 @@ function VehicleProvider({ children }: Readonly<Props>) {
     if (!(selectedBrand === null || selectedModel === null))
       fetchYears(selectedBrand?.codigo, selectedModel?.codigo);
   }, [selectedBrand, selectedModel]);
+
+  useEffect(() => {
+    if (
+      !(
+        selectedBrand === null ||
+        selectedModel === null ||
+        selectedYear === null
+      )
+    )
+      fetchPrice(
+        selectedBrand?.codigo,
+        selectedModel?.codigo,
+        selectedYear?.codigo
+      );
+  }, [selectedBrand, selectedModel, selectedYear]);
 
   const fetchBrands = async () => {
     setSelectedModel(null);
@@ -86,10 +103,19 @@ function VehicleProvider({ children }: Readonly<Props>) {
     setModels(data);
   };
 
-  const fetchYears = async (codigoBrand: string, codigoModels: string) => {
+  const fetchYears = async (codigoBrand: string, codigoModel: string) => {
     setSelectedYear(null);
-    const data = await fipeApi.fetchYears(codigoBrand, codigoModels);
+    const data = await fipeApi.fetchYears(codigoBrand, codigoModel);
     setYears(data);
+  };
+
+  const fetchPrice = async (
+    codigoBrand: string,
+    codigoModel: string,
+    codigoYear: string
+  ) => {
+    const data = await fipeApi.fetchPrice(codigoBrand, codigoModel, codigoYear);
+    setPrice(data);
   };
 
   const contextValue = {
@@ -102,6 +128,7 @@ function VehicleProvider({ children }: Readonly<Props>) {
     years,
     selectedYear,
     setSelectedYear,
+    price,
   };
 
   return (

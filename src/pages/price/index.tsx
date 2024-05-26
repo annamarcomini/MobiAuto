@@ -1,7 +1,11 @@
-import { Typography, Box } from "@mui/material"
-import { styled } from "@mui/system"
-import { css } from "@emotion/react"
-import Head from "next/head"
+import { Typography, Box, Grid } from "@mui/material";
+import { styled } from "@mui/system";
+import { css } from "@emotion/react";
+import Head from "next/head";
+import { useVehicleContext } from "@/contexts/Vehicle";
+import { useEffect } from "react";
+import { useRouter } from "next/router";
+import fipeApi from "@/service/fipeApi";
 
 const FullHeightContainer = styled(Box)(
   ({ theme }) => css`
@@ -12,28 +16,28 @@ const FullHeightContainer = styled(Box)(
     justify-content: center;
     background-color: ${theme.palette.secondary.light};
   `
-)
+);
 
 const Title = styled(Typography)`
   font-size: 2.5rem;
   font-weight: bold;
+  text-align: center;
 
   ${({ theme }) => theme.breakpoints.down("sm")} {
     font-size: 40px;
   }
-`
+`;
 
 const PriceContainer = styled(Box)(
   ({ theme }) => css`
-    display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 5rem;
     background-color: ${theme.palette.secondary.main};
   `
-)
+);
 
-const Price = styled(Typography)(
+const PriceText = styled(Typography)(
   ({ theme }) => css`
     display: flex;
     align-items: center;
@@ -43,7 +47,7 @@ const Price = styled(Typography)(
     font-weight: bold;
     color: ${theme.palette.secondary.contrastText};
   `
-)
+);
 
 const Label = styled(Typography)(
   ({ theme }) => css`
@@ -51,10 +55,18 @@ const Label = styled(Typography)(
     font-weight: 500;
     color: ${theme.palette.text.secondary};
   `
-)
+);
 
-export default function Home() {
-  const price = 90000.99
+export default function Price() {
+  const { selectedBrand, selectedModel, selectedYear, price } =
+    useVehicleContext();
+  const router = useRouter();
+  useEffect(() => {
+    if (!(selectedBrand || selectedModel || selectedYear)) {
+      router.push("/");
+    }
+  }, [selectedBrand, selectedModel, selectedYear, router]);
+
   return (
     <>
       <Head>
@@ -62,18 +74,19 @@ export default function Home() {
       </Head>
 
       <FullHeightContainer>
-        <Title variant="h4">Tabela Fipe: Preço</Title>
-
+        <Grid container justifyContent={"center"} mt={2}>
+          <Grid item xs={12} sm={8} md={6} lg={6}>
+            <Title variant="h4">
+              {`Tabela Fipe: Preço ${selectedBrand?.nome} ${selectedModel?.nome}
+          ${selectedYear?.nome}`}
+            </Title>
+          </Grid>
+        </Grid>
         <PriceContainer mt={3} px={3} py={1}>
-          <Price>
-            {price.toLocaleString("pt-BR", {
-              style: "currency",
-              currency: "BRL",
-            })}
-          </Price>
+          <PriceText>{price}</PriceText>
         </PriceContainer>
         <Label mt={2}>Este é o preço de compra do veículo</Label>
       </FullHeightContainer>
     </>
-  )
+  );
 }
