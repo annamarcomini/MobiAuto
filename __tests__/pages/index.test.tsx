@@ -35,6 +35,6 @@ describe("Home", () => {
 
     expect(screen.getByLabelText("Campo marca")).toBeInTheDocument();
     expect(screen.getByLabelText("Campo modelo")).toBeInTheDocument();
-    expect(screen.queryByLabelText("Campo ano")).toBeInTheDocument();
+    expect(screen.queryByLabelText("Campo ano")).not.toBeInTheDocument();
   });
 });
