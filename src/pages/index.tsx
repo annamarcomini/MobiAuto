@@ -109,6 +109,7 @@ export default function Home() {
             <Card variant="outlined">
               <CardContent>
                 <Autocomplete
+                  aria-label="Campo marca"
                   disablePortal
                   options={brands}
                   getOptionLabel={(option) => option.nome}
@@ -123,6 +124,7 @@ export default function Home() {
                   )}
                 />
                 <Autocomplete
+                  aria-label="Campo modelo"
                   disablePortal
                   disabled={!hasSelectedBrand}
                   options={models}
@@ -138,6 +140,7 @@ export default function Home() {
                 />
                 {hasSelectedModel && (
                   <Autocomplete
+                    aria-label="Campo ano"
                     disablePortal
                     options={years}
                     getOptionLabel={(option) => option.nome}
