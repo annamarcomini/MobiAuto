@@ -1,7 +1,4 @@
 import {
-  Container,
-  Typography,
-  Box,
   Card,
   CardContent,
   Button,
@@ -9,57 +6,16 @@ import {
   TextField,
   Grid,
 } from "@mui/material";
-import { styled } from "@mui/system";
-import { css } from "@emotion/react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useVehicleContext } from "../contexts/Vehicle";
-
-const FullHeightContainer = styled(Container)(
-  ({ theme }) => css`
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  `
-);
-
-const HeaderContainer = styled(Box)(
-  ({ theme }) => css`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  `
-);
-
-const Title = styled(Typography)`
-  font-size: 2.4rem;
-  font-weight: bold;
-
-  ${({ theme }) => theme.breakpoints.down("sm")} {
-    font-size: 1.8rem;
-  }
-`;
-
-const Subtitle = styled(Typography)`
-  font-size: 1.8rem;
-  font-weight: 600;
-
-  ${({ theme }) => theme.breakpoints.down("sm")} {
-    font-size: 1.5rem;
-  }
-`;
-
-const ButtonContainer = styled(Box)(
-  ({ theme }) => css`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  `
-);
+import {
+  FullHeightContainer,
+  HeaderContainer,
+  Title,
+  Subtitle,
+  ButtonContainer,
+} from "./styles";
 
 export default function Home() {
   const router = useRouter();
