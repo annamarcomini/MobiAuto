@@ -15,7 +15,7 @@ import {
   Title,
   Subtitle,
   ButtonContainer,
-} from "./styles";
+} from "../styles/styles";
 
 export default function Home() {
   const router = useRouter();

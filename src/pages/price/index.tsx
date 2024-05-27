@@ -3,13 +3,20 @@ import Head from "next/head";
 import { useVehicleContext } from "@/contexts/Vehicle";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-import { FullHeightContainer, Title } from "../styles";
-import { PriceContainer, PriceText, Label } from "./styles";
+import {
+  PriceContainer,
+  PriceText,
+  Label,
+  FullHeightContainer,
+  Title,
+} from "../../styles/priceStyles";
 
 export default function Price() {
   const { selectedBrand, selectedModel, selectedYear, price } =
     useVehicleContext();
+
   const router = useRouter();
+
   useEffect(() => {
     if (!(selectedBrand || selectedModel || selectedYear)) {
       router.push("/");
