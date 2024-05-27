@@ -23,7 +23,7 @@ const Title = styled(Typography)`
   text-align: center;
 
   ${({ theme }) => theme.breakpoints.down("sm")} {
-    font-size: 2rem;
+    font-size: 1.7rem;
   }
 `;
 
@@ -47,7 +47,7 @@ const PriceText = styled(Typography)(
     color: ${theme.palette.secondary.contrastText};
 
     ${theme.breakpoints.down("sm")} {
-      font-size: 1rem;
+      font-size: 1.2rem;
     }
   `
 );
