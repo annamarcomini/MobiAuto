@@ -112,6 +112,7 @@ export default function Home() {
                 )}
                 <ButtonContainer mt={4} mb={1}>
                   <Button
+                    aria-label="Consultar preço"
                     onClick={onSubmit}
                     disabled={!isFormCompleted}
                     sx={{ px: 5, pb: 1, pt: 1, fontSize: 12 }}
