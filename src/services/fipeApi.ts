@@ -19,7 +19,7 @@ const fetchModels = async (codigoBrand: string) => {
 
     return data.modelos;
   } catch (error) {
-    console.error("Error fetching brands:", error);
+    console.error("Error fetching models:", error);
   }
 };
 
@@ -32,7 +32,7 @@ const fetchYears = async (codigoBrand: string, codigoModel: string) => {
 
     return data;
   } catch (error) {
-    console.error("Error fetching brands:", error);
+    console.error("Error fetching years:", error);
   }
 };
 
@@ -48,7 +48,7 @@ const fetchPrice = async (
     const data = await response.json();
     return data.Valor;
   } catch (error) {
-    console.error("Error fetching brands:", error);
+    console.error("Error fetching prices:", error);
   }
 };
 const fipeApi = { fetchBrands, fetchModels, fetchYears, fetchPrice };
