@@ -4,7 +4,7 @@ O Mobiauto foi criado para ser um site de pesquisas de preços de carros de acor
 
 ## Pipeline CI/CD
 
-Este projeto possue uma pipeline de CI/CD que executa os testes do projeto e o lint, ao passar pelos dois testes o projeto está apto para iniciar automaticamente a esteira de deploy na vercel.
+Este projeto possue uma pipeline de CI/CD implementada no git hub actions que executa os testes do projeto e o lint, ao passar pelos dois testes o projeto está apto para iniciar automaticamente a esteira de deploy na vercel.
 
 ## Tecnologias
 
