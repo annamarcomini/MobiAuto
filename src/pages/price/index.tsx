@@ -18,7 +18,7 @@ export default function Price() {
   const router = useRouter();
 
   useEffect(() => {
-    if (!(selectedBrand || selectedModel || selectedYear)) {
+    if (!selectedBrand || !selectedModel || !selectedYear) {
       router.push("/");
     }
   }, [selectedBrand, selectedModel, selectedYear, router]);

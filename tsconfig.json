@@ -21,7 +21,8 @@
       "@/contexts/*": ["src/contexts/*"],
       "@/pages/*": ["src/pages/*"],
       "@/styles/*": ["src/styles/*"],
-      "@/service/*": ["src/services/*"]
+      "@/service/*": ["src/services/*"],
+      "@/src/*": ["src/*"]
     },
     "plugins": [
       {
